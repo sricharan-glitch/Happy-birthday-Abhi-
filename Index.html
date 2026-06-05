@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 Years, One Friendship | Abhi Nav Sai</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display for cinematic headers, Inter for premium UI, Caveat for handwritten letter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti Library for Birthday celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B18',
+                            950: '#03060F',
+                        },
+                        gold: {
+                            400: '#F3C65F',
+                            500: '#D4AF37',
+                            600: '#AA851C',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        cinematic: ['Playfair Display', 'serif'],
+                        handwritten: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Premium custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #03060F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AA851C;
+        }
+
+        /* Gold gradient text helper */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFE8A3 0%, #D4AF37 50%, #8C6F12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animated border glow */
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+            border-color: #D4AF37;
+        }
+
+        /* Polaroid layout custom styling */
+        .polaroid {
+            background: #fdfdfd;
+            padding: 12px 12px 32px 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: rotate(var(--rotation));
+        }
+        .polaroid:hover {
+            transform: scale(1.08) rotate(0deg) translateY(-10px) !important;
+            z-index: 40;
+            box-shadow: 0 20px 35px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Star field overlay styling */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Custom soft pulse animation */
+        @keyframes softGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        .bg-glow {
+            animation: softGlow 8s infinite ease-in-out;
+        }
+
+        /* Violent wobble animation for the sneeze reunion */
+        @keyframes sneezeShake {
+            0%, 100% { transform: translateX(0) rotate(0); }
+            10% { transform: translateX(-8px) rotate(-3deg); }
+            20% { transform: translateX(6px) rotate(3deg); }
+            30% { transform: translateX(-10px) rotate(-4deg); }
+            40% { transform: translateX(8px) rotate(2deg); }
+            50% { transform: translateX(-6px) rotate(-1deg); }
+            60% { transform: translateX(4px) rotate(1deg); }
+            70% { transform: translateX(-2px) rotate(-1deg); }
+            80% { transform: translateX(2px) rotate(0); }
+        }
+        .sneeze-active {
+            animation: sneezeShake 0.65s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        /* Letter writing style */
+        .paper-texture {
+            background-color: #fcfbf7;
+            background-image: radial-gradient(#eceae2 1px, transparent 0), radial-gradient(#eceae2 1px, transparent 0);
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        /* Loading shimmer animation */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        }
+        .ai-glow-pulse {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-navy-950 text-slate-100 min-h-screen overflow-x-hidden relative font-sans selection:bg-gold-500 selection:text-black">
+
+    <!-- Interactive Starfield Canvas background -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Global ambient background glowing points -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[10%] left-[5%] w-96 h-96 rounded-full bg-blue-900/10 blur-[120px] bg-glow"></div>
+        <div class="absolute bottom-[20%] right-[5%] w-96 h-96 rounded-full bg-gold-900/10 blur-[150px] bg-glow" style="animation-delay: -3s;"></div>
+        <div class="absolute top-[60%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-indigo-950/10 blur-[200px] bg-glow" style="animation-delay: -5s;"></div>
+    </div>
+
+    <!-- Music Player Controls Fixed Widget -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-3">
+        <button id="musicToggle" class="bg-navy-900/80 backdrop-blur-md border border-gold-500/30 text-gold-400 hover:text-gold-500 p-3 rounded-full hover:border-gold-500 transition-all flex items-center justify-center shadow-lg animate-bounce" title="Toggle Cinematic Sound">
+            <i class="fas fa-music text-lg animate-pulse" id="musicIcon"></i>
+        </button>
+        <span class="text-xs text-gold-400 bg-navy-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-gold-500/20 shadow-md hidden sm:inline-block">
+            🔊 Sound On
+        </span>
+    </div>
+
+    <main class="relative z-10 w-full">
+
+        <!-- Opening Hero Section -->
+        <section id="hero" class="min-h-screen flex flex-col justify-center items-center px-4 py-20 relative text-center">
+            <div class="max-w-4xl mx-auto space-y-8">
+                
+                <!-- Intro Title Header -->
+                <span class="text-gold-500 uppercase tracking-[0.3em] text-xs sm:text-sm font-semibold inline-block mb-2">
+                    13 Years, One Friendship
+                </span>
+                
+                <!-- Main Birthday Title -->
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-cinematic font-bold tracking-tight text-white mb-4">
+                    Happy 19th Birthday, <br class="hidden sm:inline" />
+                    <span class="text-gold-gradient">Abhi Nav Sai</span>
+                </h1>
+                
+                <!-- Heart-warming Quote -->
+                <div class="space-y-2 max-w-2xl mx-auto">
+                    <p class="text-lg sm:text-2xl text-slate-300 font-light italic">
+                        "Some friendships happen by chance."
+                    </p>
+                    <p class="text-lg sm:text-2xl text-gold-400 font-medium italic">
+                        "Some become family by choice."
+                    </p>
+                </div>
+
+                <!-- Live Countdown Clock -->
+                <div class="pt-8 pb-4">
+                    <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Countdown to June 6 (Abhi's Birthday)</p>
+                    <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto">
+                        <div class="bg-navy-900/80 backdrop-blur-sm border border-gold-500/20 p-3 sm:p-4 rounded-xl shadow-lg">
+                            <span id="days" class="block text-2xl sm:text-4xl font-bold text-gold-400">00</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider">Days</span>
+                        </div>
+                        <div class="bg-navy-900/80 backdrop-blur-sm border border-gold-500/20 p-3 sm:p-4 rounded-xl shadow-lg">
+                            <span id="hours" class="block text-2xl sm:text-4xl font-bold text-gold-400">00</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider">Hours</span>
+                        </div>
+                        <div class="bg-navy-900/80 backdrop-blur-sm border border-gold-500/20 p-3 sm:p-4 rounded-xl shadow-lg">
+                            <span id="minutes" class="block text-2xl sm:text-4xl font-bold text-gold-400">00</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider">Mins</span>
+                        </div>
+                        <div class="bg-navy-900/80 backdrop-blur-sm border border-gold-500/20 p-3 sm:p-4 rounded-xl shadow-lg">
+                            <span id="seconds" class="block text-2xl sm:text-4xl font-bold text-gold-400">00</span>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider">Secs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Downwards Indicator -->
+                <div class="pt-8">
+                    <a href="#meet-abhi" class="inline-flex flex-col items-center gap-2 text-slate-400 hover:text-gold-400 transition-colors">
+                        <span class="text-xs uppercase tracking-[0.2em]">Enter the Story</span>
+                        <i class="fas fa-chevron-down animate-bounce text-gold-400"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 1: Meet Abhi -->
+        <section id="meet-abhi" class="py-24 px-4 relative max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Main Beach Selfie Presentation (First Pic - Selfie by Abhi) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-gold-600 to-amber-400 rounded-2xl blur opacity-35 group-hover:opacity-60 transition duration-1000"></div>
+                        <div class="relative bg-navy-900 p-3 rounded-2xl border border-gold-500/20 shadow-2xl">
+                            <!-- Real beach selfie image loaded directly -->
+                            <img src="IMG-20260222-WA0115.jpg" alt="Abhi taking selfie at beach" onerror="this.src='https://placehold.co/400x500/03060f/d4af37?text=Abhi+Selfie+At+The+Beach'" class="rounded-xl w-full max-w-[360px] object-cover aspect-[4/5] object-center transition-all duration-500 group-hover:scale-[1.02]">
+                            <div class="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-md border border-gold-500/20 p-3 rounded-lg text-center">
+                                <p class="text-xs text-gold-400 tracking-wider font-semibold uppercase">The Beach Selfie 🌊</p>
+                                <p class="text-[11px] text-slate-300">Abhi capturing a timeless brother moment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Details Cards -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase block">Chapter 01</span>
+                        <h2 class="text-3xl sm:text-5xl font-cinematic font-semibold text-white">Meet Abhi</h2>
+                        <div class="h-0.5 w-20 bg-gradient-to-r from-gold-500 to-transparent"></div>
+                    </div>
+                    
+                    <p class="text-slate-300 text-lg leading-relaxed font-light">
+                        "Not just a friend. A brother, a supporter, a constant presence in every important chapter of my life."
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-navy-900/60 border border-gold-500/10 p-4 rounded-xl hover:border-gold-500/30 transition-colors">
+                            <span class="text-[10px] uppercase text-slate-400 tracking-wider block">Full Name</span>
+                            <span class="text-lg font-semibold text-white">Abhi Nav Sai</span>
+                        </div>
+                        <div class="bg-navy-900/60 border border-gold-500/10 p-4 rounded-xl hover:border-gold-500/30 transition-colors">
+                            <span class="text-[10px] uppercase text-slate-400 tracking-wider block">Nickname</span>
+                            <span class="text-lg font-semibold text-gold-400">Abhi</span>
+                        </div>
+                        <div class="bg-navy-900/60 border border-gold-500/10 p-4 rounded-xl hover:border-gold-500/30 transition-colors">
+                            <span class="text-[10px] uppercase text-slate-400 tracking-wider block">Date of Birth</span>
+                            <span class="text-lg font-semibold text-white">June 6, 2007</span>
+                        </div>
+                        <div class="bg-navy-900/60 border border-gold-500/10 p-4 rounded-xl hover:border-gold-500/30 transition-colors">
+                            <span class="text-[10px] uppercase text-slate-400 tracking-wider block">Age Turning</span>
+                            <span class="text-lg font-semibold text-gold-400">19 Years</span>
+                        </div>
+                    </div>
+
+                    <!-- Zodiac Callout (Gemini) -->
+                    <div class="bg-gradient-to-r from-gold-500/10 to-transparent border-l-4 border-gold-500 p-4 rounded-r-xl flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-2xl font-cinematic shrink-0">
+                            ♊
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-white">Zodiac Sign: Gemini</h4>
+                            <p class="text-xs text-slate-300">Adaptable, loyal, energetic, and always bringing life to the journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TIMELINE SECTION WRAPPER -->
+        <section id="timeline" class="py-24 relative max-w-6xl mx-auto px-4">
+            
+            <div class="text-center mb-16 space-y-2">
+                <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase">Our Chronicles</span>
+                <h2 class="text-3xl sm:text-5xl font-cinematic font-bold">The Chapters of Us</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto">A cinematic trip down memory lane from school corridors to adulthood reunion.</p>
+                <div class="h-0.5 w-32 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+            </div>
+
+            <!-- Main Timeline Stem -->
+            <div class="relative border-l-2 border-dashed border-gold-500/30 pl-6 sm:pl-12 ml-4 sm:ml-8 space-y-16">
+
+                <!-- Section 2: The Day We Met -->
+                <div class="relative group">
+                    <!-- Timeline Dot marker -->
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <!-- Card layout -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900/40 p-6 sm:p-8 rounded-2xl border border-gold-500/10 gold-border-glow">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="text-gold-500 text-xs font-semibold uppercase tracking-wider block">4th Class (The Root)</span>
+                            <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">The Day We Met</h3>
+                            <p class="text-slate-300 leading-relaxed font-light">
+                                "We first met in 4th class through a mutual friend. None of us knew then that this simple introduction would become one of the most important friendships of our lives."
+                            </p>
+                        </div>
+                        <!-- Section Image (Our childhood classroom memory) -->
+                        <div class="lg:col-span-5">
+                            <img src="IMG-20250626-WA0101.jpg" alt="5th Class memory" onerror="this.src='https://placehold.co/400x250/03060f/d4af37?text=Childhood+Classroom+Memory'" class="rounded-xl w-full object-cover shadow-lg aspect-video border border-gold-500/10 hover:border-gold-500/30 transition-all">
+                            <p class="text-[10px] text-center text-slate-400 mt-2 italic">"5th Shaurya classroom days, where the sparks of brotherhood ignited."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: The Fight -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-red-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <!-- Card layout with interactive gray-to-color uniform memories image to represent silent era -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900/40 p-6 sm:p-8 rounded-2xl border border-red-500/15 hover:border-red-500/30 transition-all hover:shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="text-red-400 text-xs font-semibold uppercase tracking-wider block">10th Class (The Strain)</span>
+                            <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">The Three-Month Silence</h3>
+                            <p class="text-slate-300 leading-relaxed font-light">
+                                "In 10th class, we had a fight and barely spoke for almost three months. It felt strange because we were used to being around each other every day. The classroom was empty, even when it was full of noise."
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5 group/img">
+                            <!-- Grayscale styling overlays to represent division; reveals original blue school uniform upon mouse interaction -->
+                            <div class="relative overflow-hidden rounded-xl border border-red-500/20">
+                                <img src="IMG-20250626-WA0105.jpg" alt="Uniform standing memory" onerror="this.src='https://placehold.co/400x250/03060f/ef4444?text=Silent+Era+Days'" class="rounded-xl w-full object-cover shadow-lg aspect-video filter grayscale group-hover/img:grayscale-0 transition-all duration-700">
+                                <div class="absolute inset-0 bg-red-950/10 pointer-events-none group-hover/img:opacity-0 transition-opacity"></div>
+                            </div>
+                            <p class="text-[10px] text-center text-red-300 mt-2 italic">"Hover to restore colors: Remembering the bond even during silent times."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: The Funniest Reunion (Interactive Card) -->
+                <div class="relative group" id="sneezeSection">
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <div id="sneezeCard" class="bg-navy-900/60 p-6 sm:p-8 rounded-2xl border border-gold-500/10 gold-border-glow transition-all">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <span class="text-gold-500 text-xs font-semibold uppercase tracking-wider block">The Turnaround</span>
+                                <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">The Sneeze That Fixed Everything</h3>
+                                <p class="text-slate-300 leading-relaxed font-light">
+                                    "When I finally gathered the courage to speak to him again, I was extremely nervous. At that exact moment, I sneezed and embarrassed myself completely..."
+                                </p>
+                                <p id="sneezeReveal" class="text-gold-400 leading-relaxed font-semibold transition-all duration-700 max-h-0 opacity-0 overflow-hidden">
+                                    "Instead of making things awkward, it made him laugh out loud! That single golden laugh completely broke three long months of absolute silence and brought our friendship back stronger than ever before! 😂"
+                                </p>
+                                
+                                <!-- Interactive Button trigger -->
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-3 pt-2">
+                                    <button id="sneezeBtn" class="bg-gradient-to-r from-gold-500 to-amber-400 text-black font-semibold text-xs py-2.5 px-5 rounded-lg shadow-md hover:from-gold-400 hover:to-gold-300 active:scale-95 transition-all uppercase tracking-wider flex items-center justify-center gap-2">
+                                        <span>🤧</span> Trigger Sneeze
+                                    </button>
+                                    <span class="text-[10px] text-slate-400 italic text-center sm:text-left">Click to trigger high-school hallway laughter!</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Real image showcasing hallway close-up happy smiles -->
+                            <div class="lg:col-span-5">
+                                <img src="IMG-20250626-WA0096.jpg" alt="Happy Hallway Smiles" onerror="this.src='https://placehold.co/400x250/03060f/d4af37?text=Hallway+Smiles+School+Days'" class="rounded-xl w-full object-cover shadow-lg aspect-video border border-gold-500/15">
+                                <p class="text-[10px] text-center text-slate-400 mt-2 italic">"True school laughter that shatters any silence."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Section 5: School Memories -->
+        <section id="memories" class="py-24 bg-navy-900/25 border-y border-gold-500/10 relative">
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <div class="text-center mb-16 space-y-2">
+                    <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase">Nostalgic Chronicles</span>
+                    <h2 class="text-3xl sm:text-5xl font-cinematic font-bold">Unforgettable School Days</h2>
+                    <p class="text-slate-400 text-sm max-w-lg mx-auto">Moments that felt so ordinary then, but turned out to be completely priceless now.</p>
+                    <div class="h-0.5 w-24 bg-gold-500 mx-auto mt-4"></div>
+                </div>
+
+                <!-- Custom Grid of Interactive Memory Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Memory Card 1 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">🍱</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Sharing lunch together</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Stealing meals before the actual lunch bell rang, sharing tastes, fights, and food in equal measure.</p>
+                    </div>
+
+                    <!-- Memory Card 2 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">🚲</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Cycling together</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Racing through the streets without a destination, carrying doubles, and laughing all the way home.</p>
+                    </div>
+
+                    <!-- Memory Card 3 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">💬</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Long post-school talks</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Standing on street corners or classroom gates talking about crushes, dreams, plans, and random jokes for hours.</p>
+                    </div>
+
+                    <!-- Memory Card 4 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">🎭</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Making fun of each other</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Innumerable inside jokes, funny nicknames, and roasting with absolutely no filters. True brotherhood at its peak.</p>
+                    </div>
+
+                    <!-- Memory Card 5 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">🎒</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Everyday classroom moments</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Copying notes together, passing slips, getting punished by teachers, and waiting eagerly for the bell to strike.</p>
+                    </div>
+
+                    <!-- Memory Card 6 -->
+                    <div class="bg-navy-950 border border-gold-500/10 p-6 rounded-xl hover:border-gold-500/40 transition-all hover:-translate-y-2 duration-300 relative group overflow-hidden">
+                        <div class="absolute -right-6 -bottom-6 text-6xl opacity-5 group-hover:opacity-10 transition-all">💎</div>
+                        <h4 class="text-lg font-semibold text-gold-400 mb-2">Ordinary yet Priceless</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed">Creating standard moments of joy that felt small back then, but now stand as the absolute pillars of my sanity.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 6, 7, 8 in Timeline continuation format -->
+        <section class="py-24 max-w-6xl mx-auto px-4">
+            <div class="relative border-l-2 border-dashed border-gold-500/30 pl-6 sm:pl-12 ml-4 sm:ml-8 space-y-16">
+                
+                <!-- Section 6: The Legendary Prank -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900/40 p-6 sm:p-8 rounded-2xl border border-gold-500/10 gold-border-glow">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="text-gold-500 text-xs font-semibold uppercase tracking-wider block">Last Day of School (The Farewell)</span>
+                            <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">The Legendary Prank</h3>
+                            <p class="text-slate-300 leading-relaxed font-light">
+                                "On the last day of school, we pulled several hilarious pranks on Abhi and even linked him with a girl just to tease him endlessly! Years later, it remains one of the absolute funniest and highly discussed memories from our school life whenever we sit down."
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <!-- Real image of class gang smiling with chalkboard -->
+                            <img src="IMG-20250626-WA0148.jpg" alt="Classroom farewell day" onerror="this.src='https://placehold.co/400x250/03060f/d4af37?text=Last+Day+Classroom+Photo'" class="rounded-xl w-full object-cover aspect-video shadow-2xl border border-gold-500/15 transition-all group-hover:brightness-110">
+                            <p class="text-[10px] text-center text-slate-400 mt-2 italic">"Posing happily in front of the chalkboard: classroom champions!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: The Separation -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900/40 p-6 sm:p-8 rounded-2xl border border-gold-500/10 gold-border-glow">
+                        <div class="lg:col-span-7 space-y-4">
+                            <span class="text-gold-500 text-xs font-semibold uppercase tracking-wider block">College Years (The Distance)</span>
+                            <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">Different Roads</h3>
+                            <p class="text-slate-300 leading-relaxed font-light">
+                                "After school, we had planned to continue our studies side-by-side. But because I had to change my decisions at the absolute last moment, we ended up joining completely different colleges. For almost two years, life pushed us onto separate paths and tight busy schedules."
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <!-- Real image of Avengers wall panel group portrait -->
+                            <img src="IMG-20250626-WA0113.jpg" alt="Separation timeline card" onerror="this.src='https://placehold.co/400x250/03060f/d4af37?text=Squad+Avengers+Wall+Art'" class="rounded-xl w-full object-cover aspect-video shadow-2xl border border-gold-500/15">
+                            <p class="text-[10px] text-center text-slate-400 mt-2 italic">"Avengers assemble: Standing tall despite college distances."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: The Reunion (Beach & Burger King Visual Theme) -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] sm:-left-[59px] top-1.5 w-6 h-6 rounded-full bg-navy-950 border-4 border-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    </div>
+                    <!-- Beach Theme visual card wrapper -->
+                    <div class="bg-gradient-to-br from-navy-900/80 via-navy-950 to-blue-950/20 p-6 sm:p-8 rounded-2xl border border-blue-500/20 shadow-xl overflow-hidden relative">
+                        <!-- Tiny wave visual details in background -->
+                        <div class="absolute bottom-0 right-0 left-0 h-2 bg-gradient-to-r from-teal-500/10 via-blue-500/20 to-gold-500/10 rounded-b-2xl"></div>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-6 space-y-4">
+                                <span class="text-blue-400 text-xs font-semibold uppercase tracking-wider block">The Return (Brotherhood Triumphant)</span>
+                                <h3 class="text-2xl sm:text-3xl font-cinematic text-white font-medium">Picking Up Where We Left Off</h3>
+                                <p class="text-slate-300 leading-relaxed font-light">
+                                    "After a long, trying gap, we met again. We headed to Burger King, spent quality time together, visited the serene beach, watched a movie, shared delicious Biryani, and gossiped alongside our old childhood friends. It truly felt like not a single second of time had passed."
+                                </p>
+                                <div class="flex items-center gap-2 text-xs text-gold-400">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                    <span>Beach breezes, burger feasts, and endless nostalgic laughs.</span>
+                                </div>
+                            </div>
+                            <!-- Parallel row columns showcasing Burger King and Beach reunion highlights -->
+                            <div class="lg:col-span-6 grid grid-cols-2 gap-3">
+                                <div class="relative group/sub">
+                                    <img src="IMG-20250626-WA0086.jpg" alt="Burger King Reunion" onerror="this.src='https://placehold.co/200x150/03060f/d4af37?text=BK+Feast+Reunion'" class="rounded-lg w-full object-cover h-32 shadow-xl border border-gold-500/10 group-hover/sub:scale-105 transition-all">
+                                    <p class="text-[9px] text-center text-slate-400 mt-1">"The long BK table"</p>
+                                </div>
+                                <div class="relative group/sub">
+                                    <img src="IMG-20250626-WA0098.jpg" alt="Reunion closeup photo" onerror="this.src='https://placehold.co/200x150/03060f/d4af37?text=Grownup+Reunion+Close'" class="rounded-lg w-full object-cover h-32 shadow-xl border border-gold-500/10 group-hover/sub:scale-105 transition-all">
+                                    <p class="text-[9px] text-center text-slate-400 mt-1">"Reunited close up"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Section 9: Why Abhi Matters (Glow Grid Cards) -->
+        <section id="why-matters" class="py-24 px-4 relative max-w-6xl mx-auto">
+            <div class="text-center mb-16 space-y-2">
+                <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase">Deep Foundations</span>
+                <h2 class="text-3xl sm:text-5xl font-cinematic font-bold">Why Abhi Matters</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto">He was never just a friend on the contact list. He stands as a pillar of my existence.</p>
+                <div class="h-0.5 w-24 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-navy-900/50 backdrop-blur-sm border border-gold-500/10 p-8 rounded-2xl flex flex-col justify-between hover:border-gold-500/40 hover:bg-navy-900/80 transition-all duration-300 text-center min-h-[180px]">
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-chevron-circle-up"></i></div>
+                    <p class="text-lg sm:text-xl font-cinematic font-medium text-slate-100">"He stayed through my highs."</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-navy-900/50 backdrop-blur-sm border border-gold-500/10 p-8 rounded-2xl flex flex-col justify-between hover:border-gold-500/40 hover:bg-navy-900/80 transition-all duration-300 text-center min-h-[180px]">
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-chevron-circle-down"></i></div>
+                    <p class="text-lg sm:text-xl font-cinematic font-medium text-slate-100">"He stayed through my lows."</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-navy-900/50 backdrop-blur-sm border border-gold-500/10 p-8 rounded-2xl flex flex-col justify-between hover:border-gold-500/40 hover:bg-navy-900/80 transition-all duration-300 text-center min-h-[180px]">
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-hand-holding-heart"></i></div>
+                    <p class="text-lg sm:text-xl font-cinematic font-medium text-slate-100">"He supported me when I needed support."</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-navy-900/50 backdrop-blur-sm border border-gold-500/10 p-8 rounded-2xl flex flex-col justify-between hover:border-gold-500/40 hover:bg-navy-900/80 transition-all duration-300 text-center min-h-[180px] lg:col-start-1 lg:col-span-1">
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-school"></i></div>
+                    <p class="text-lg sm:text-xl font-cinematic font-medium text-slate-100">"He made school feel like home."</p>
+                </div>
+
+                <!-- Card 5 (Wider callout for becoming family) -->
+                <div class="bg-gradient-to-r from-navy-900/80 to-indigo-950/40 border border-gold-500/20 p-8 rounded-2xl flex flex-col justify-between hover:border-gold-500/40 transition-all duration-300 text-center min-h-[180px] md:col-span-2">
+                    <div class="text-gold-400 text-4xl mb-4 animate-pulse"><i class="fas fa-house-user"></i></div>
+                    <p class="text-xl sm:text-2xl font-cinematic font-semibold text-gold-400">"He became family."</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Section 10: Memory Gallery (Digital board with Polaroid snaps) -->
+        <section id="gallery" class="py-24 bg-navy-900/30 border-t border-gold-500/10 relative">
+            <div class="max-w-7xl mx-auto px-4">
+                
+                <div class="text-center mb-16 space-y-2">
+                    <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase">Digital Keepsakes</span>
+                    <h2 class="text-3xl sm:text-5xl font-cinematic font-bold">The Memory Board</h2>
+                    <p class="text-slate-400 text-sm max-w-lg mx-auto">Hover over or tap any polaroid to bring the memories back to life. Every image holds 13 years of dynamic bonding.</p>
+                    <div class="h-0.5 w-24 bg-gold-500 mx-auto mt-4"></div>
+                </div>
+
+                <!-- Polaroid Board Flex-grid Layout using authentic filenames -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 justify-items-center">
+                    
+                    <!-- Polaroid 1 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: -4deg;" onclick="openLightbox('IMG-20260222-WA0115.jpg', 'The Reunion Beach Selfie 🌊', 'First selfie at the beach with Abhi taking the snapshot of our reunion vibes. A moment where winds met high hopes!')">
+                        <img src="IMG-20260222-WA0115.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Beach+Reunion'" alt="Memory 1" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Beach Reunion 🌊</p>
+                    </div>
+
+                    <!-- Polaroid 2 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: 3deg;" onclick="openLightbox('IMG-20250626-WA0148.jpg', 'Classroom Crew 🎒', 'The ultimate high school classroom snapshot. Poses, smiles, and the background chalkboard loaded with homework patterns!')">
+                        <img src="IMG-20250626-WA0148.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Classroom+Farewell'" alt="Memory 2" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Classroom Crew 🎒</p>
+                    </div>
+
+                    <!-- Polaroid 3 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: -2deg;" onclick="openLightbox('IMG-20250626-WA0113.jpg', 'Avengers Squad ⚡', 'Standing tall in front of the Avengers wall mural. True heroes of our own golden age!')">
+                        <img src="IMG-20250626-WA0113.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Avengers+Squad'" alt="Memory 3" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Avengers Squad ⚡</p>
+                    </div>
+
+                    <!-- Polaroid 4 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: 5deg;" onclick="openLightbox('IMG-20250626-WA0123.jpg', 'Orange Days 🍊', 'Lined up on school ground in matching bright orange collars and big smiles. Days filled with energy!')">
+                        <img src="IMG-20250626-WA0123.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Orange+Shirts'" alt="Memory 4" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Orange Days 🍊</p>
+                    </div>
+
+                    <!-- Polaroid 5 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: -5deg;" onclick="openLightbox('IMG-20250626-WA0099.jpg', 'High Angle Joy 📸', 'Selfie with almost the whole class cheering inside the bright blue uniform corridors. A picture of pure joy!')">
+                        <img src="IMG-20250626-WA0099.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Class+Selfie'" alt="Memory 5" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">High Angle Joy 📸</p>
+                    </div>
+
+                    <!-- Polaroid 6 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: 2deg;" onclick="openLightbox('IMG-20250626-WA0101.jpg', '5th Shaurya Met ✨', 'The classic blackboard shot showing 5th shaurya. Holding certificates of sweet early triumphs!')">
+                        <img src="IMG-20250626-WA0101.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=5th+Shaurya'" alt="Memory 6" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">5th Shaurya Met ✨</p>
+                    </div>
+
+                    <!-- Polaroid 7 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: -3deg;" onclick="openLightbox('IMG-20250626-WA0105.jpg', 'Uniform Days 👔', 'Standing in school uniform together side by side. Solid pillars, ready to face the future.')">
+                        <img src="IMG-20250626-WA0105.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Standing+In+Uniform'" alt="Memory 7" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Uniform Days 👔</p>
+                    </div>
+
+                    <!-- Polaroid 8 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: 4deg;" onclick="openLightbox('IMG-20250626-WA0096.jpg', 'The Backbenchers 🎒', 'Wide happy selfie faces showing pure teenage laughter inside the high school halls.')">
+                        <img src="IMG-20250626-WA0096.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Happy+Smiles'" alt="Memory 8" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">The Backbenchers 🎒</p>
+                    </div>
+
+                    <!-- Polaroid 9 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: -2deg;" onclick="openLightbox('IMG-20250626-WA0098.jpg', 'Brothers Forever 🤞', 'Happy close up clicks on a fine day out. Grown up but same old absolute idiots at heart.')">
+                        <img src="IMG-20250626-WA0098.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Reunion+Portrait'" alt="Memory 9" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">Brothers Forever 🤞</p>
+                    </div>
+
+                    <!-- Polaroid 10 -->
+                    <div class="polaroid cursor-pointer" style="--rotation: 3deg;" onclick="openLightbox('IMG-20250626-WA0086.jpg', 'BK Feast Squad 🍔', 'Reunion feast at Burger King long table. Smiles, chicken burgers, and talks of the legendary times!')">
+                        <img src="IMG-20250626-WA0086.jpg" onerror="this.src='https://placehold.co/300x300/03060f/d4af37?text=Burger+King+Feast'" alt="Memory 10" class="w-full aspect-square object-cover mb-4">
+                        <p class="font-handwritten text-xl text-slate-800 text-center leading-none">BK Feast Squad 🍔</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 11: The Birthday Letter -->
+        <section id="letter" class="py-24 px-4 relative max-w-4xl mx-auto">
+            
+            <div class="text-center mb-12 space-y-2">
+                <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase">From the Heart</span>
+                <h2 class="text-3xl sm:text-5xl font-cinematic font-bold">A Letter to My Brother</h2>
+                <div class="h-0.5 w-16 bg-gold-500 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Textured Handwriting Letter Element -->
+            <div class="paper-texture p-8 sm:p-12 rounded-xl shadow-2xl relative text-slate-800 overflow-hidden">
+                <!-- Watermark pattern of clock in background of paper -->
+                <div class="absolute right-8 top-8 opacity-5 text-6xl pointer-events-none">✉️</div>
+                
+                <p class="font-handwritten text-2xl font-bold tracking-wide border-b border-dashed border-slate-300 pb-2 mb-6">
+                    Dear Abhi,
+                </p>
+
+                <div id="letter-content" class="font-handwritten text-2xl tracking-wide leading-relaxed space-y-6">
+                    <p>
+                        Happy Birthday Abhi. If I look back at my school life, almost every single important, bright memory has you somewhere in it.
+                    </p>
+                    <p>
+                        From sharing lunches, cycling together after school, making crazy inside jokes, fighting like absolute idiots, reuniting over silly sneezes, and growing up side-by-side, you've been part of every single major chapter.
+                    </p>
+                    <p>
+                        Life took us on entirely different paths for some time, and different colleges could have created space, but somehow our friendship never disappeared. We picked right back up like we spoke yesterday.
+                    </p>
+                    <p>
+                        You have supported me in ways I can never fully explain. You are not just a friend anymore. You are family.
+                    </p>
+                    <p>
+                        I hope we continue creating epic memories together for years, decades, and hopefully until the very end of our lives. Thank you for being there through absolutely everything.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-dashed border-slate-300 flex flex-col items-end">
+                    <p class="font-handwritten text-xl text-slate-600">Your Brother for Life,</p>
+                    <p class="font-handwritten text-3xl font-bold text-gold-600 mt-1">~ Sai</p>
+                </div>
+
+                <!-- Dynamic Gemini TTS Narrator Panel -->
+                <div class="mt-8 p-4 bg-navy-950/5 rounded-xl border border-dashed border-slate-300/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-500/10 flex items-center justify-center text-gold-600">
+                            <i class="fas fa-volume-up" id="narratorIcon animate-pulse"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-semibold text-slate-800">Vocal Chronicles Narrator</h5>
+                            <p class="text-xs text-slate-500">Listen to Sai's voice narration generated by Gemini TTS</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-2">
+                        <select id="tts-voice" class="bg-white border border-slate-300 text-xs rounded-lg px-2 py-1.5 focus:outline-none focus:border-gold-500 text-slate-700">
+                            <option value="Sulafat">Warm (Sulafat)</option>
+                            <option value="Zephyr">Bright (Zephyr)</option>
+                            <option value="Kore">Firm (Kore)</option>
+                            <option value="Charon">Informative (Charon)</option>
+                            <option value="Fenrir">Excitable (Fenrir)</option>
+                        </select>
+                        
+                        <button id="narrateBtn" onclick="readLetterAloud()" class="bg-navy-900 text-gold-400 hover:bg-navy-850 hover:text-gold-300 px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition-all flex items-center gap-2">
+                            <span>🔊 Speak Letter</span>
+                        </button>
+                        
+                        <button id="stopNarrateBtn" onclick="stopLetterNarration()" class="hidden bg-red-600 text-white hover:bg-red-700 px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wider uppercase transition-all flex items-center gap-2">
+                            <span>⏹ Stop</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 13: The Brotherhood Chronicles AI Forge (Gemini Powered Feature) -->
+        <section id="ai-forge" class="py-24 px-4 max-w-5xl mx-auto relative">
+            <div class="bg-navy-900/90 border border-gold-500/20 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+                <!-- Golden glow accents -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-gold-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl"></div>
+
+                <div class="text-center mb-8 space-y-2">
+                    <span class="text-gold-500 text-xs font-semibold tracking-wider uppercase block">Interactive AI Experience</span>
+                    <h3 class="text-3xl sm:text-4xl font-cinematic font-semibold text-white flex items-center justify-center gap-2">
+                        <i class="fas fa-brain text-gold-400 animate-pulse"></i> The Nostalgia AI Forge
+                    </h3>
+                    <p class="text-slate-300 text-sm max-w-lg mx-auto">
+                        Weave new narratives, project your futuristic encounters, or render a dream sketch using Gemini & Imagen.
+                    </p>
+                </div>
+
+                <!-- Custom Mode Tabs -->
+                <div class="grid grid-cols-4 gap-1 sm:gap-2 bg-navy-950 p-1.5 rounded-xl border border-gold-500/10 mb-6">
+                    <button onclick="setAIMode('nostalgia')" id="tab-nostalgia" class="py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-gold-400 bg-gold-500/10 border border-gold-500/20 transition-all flex items-center justify-center gap-1">
+                        <i class="fas fa-history"></i> <span class="hidden sm:inline">Nostalgia</span> Forge
+                    </button>
+                    <button onclick="setAIMode('future')" id="tab-future" class="py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1">
+                        <i class="fas fa-rocket"></i> <span class="hidden sm:inline">Future</span> Oracle
+                    </button>
+                    <button onclick="setAIMode('creative')" id="tab-creative" class="py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1">
+                        <i class="fas fa-feather"></i> <span class="hidden sm:inline">Creative</span> Vows
+                    </button>
+                    <button onclick="setAIMode('illustrator')" id="tab-illustrator" class="py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1">
+                        <i class="fas fa-palette"></i> <span class="hidden sm:inline">Dream</span> Canvas
+                    </button>
+                </div>
+
+                <!-- Dynamic Controls based on selected mode -->
+                <div class="space-y-4">
+                    <!-- Text Prompt or Parameter -->
+                    <div>
+                        <label id="input-label" class="block text-xs text-slate-400 uppercase tracking-wider mb-2">Input an old school keyword (e.g. "math lecture", "bunking classes"):</label>
+                        <div class="relative">
+                            <input type="text" id="ai-user-input" class="w-full bg-navy-950 border border-gold-500/20 rounded-xl py-3.5 pl-4 pr-24 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors text-sm" placeholder="Type a memory, year, or topic...">
+                            <button id="generateBtn" onclick="runGemini()" class="absolute right-2 top-2 bottom-2 bg-gradient-to-r from-gold-500 to-amber-500 text-black font-semibold px-4 rounded-lg text-xs tracking-wider uppercase active:scale-95 transition-all">
+                                Forge <i class="fas fa-wand-magic-sparkles ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Suggestions Pill Buttons -->
+                    <div class="space-y-2">
+                        <span class="block text-[10px] text-slate-400 uppercase tracking-widest">Or choose a trending memory capsule:</span>
+                        <div id="ai-suggestions" class="flex flex-wrap gap-2">
+                            <!-- suggestions populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Output Console box -->
+                    <div id="ai-output-wrapper" class="hidden mt-6 bg-navy-950 border border-gold-500/10 rounded-2xl p-6 relative">
+                        <!-- Shimmer animation overlay when loading -->
+                        <div id="ai-loading-spinner" class="hidden absolute inset-0 bg-navy-950/90 rounded-2xl flex flex-col items-center justify-center space-y-3 z-10">
+                            <div class="w-10 h-10 border-4 border-gold-500/20 border-t-gold-500 rounded-full animate-spin"></div>
+                            <span id="ai-spinner-text" class="text-xs text-gold-400 uppercase tracking-widest animate-pulse">Consulting the Brotherhood Cosmos...</span>
+                        </div>
+
+                        <!-- Header of Output -->
+                        <div class="flex items-center justify-between border-b border-gold-500/10 pb-3 mb-4 text-xs">
+                            <span class="text-gold-400 font-semibold uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="flex h-2 w-2 relative">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                Forge Output
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyGeneratedText()" class="text-slate-400 hover:text-white transition-colors p-1" title="Copy text">
+                                    <i class="fas fa-copy text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Generated Content body -->
+                        <div id="ai-output-text" class="text-sm sm:text-base text-slate-200 leading-relaxed max-h-[350px] overflow-y-auto pr-2 font-light space-y-4">
+                            <!-- Streamed content printout -->
+                        </div>
+                        
+                        <!-- Image Container for Dream Canvas Mode -->
+                        <div id="ai-image-container" class="hidden mt-4 flex justify-center">
+                            <img id="ai-dream-img" src="" class="rounded-xl border border-gold-500/30 shadow-2xl max-w-full h-auto max-h-[400px] object-cover" alt="Memory generated illustration">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 12: Final Surprise Button -->
+        <section id="surprise" class="py-20 text-center relative max-w-xl mx-auto px-4">
+            <div class="bg-navy-900/80 backdrop-blur-md border-2 border-gold-500/30 p-8 sm:p-12 rounded-3xl space-y-6 shadow-2xl">
+                <h3 class="text-2xl sm:text-3xl font-cinematic font-semibold text-white">Before You Leave...</h3>
+                <p class="text-slate-300 text-sm font-light">There is one last secret message locked away for you, brother.</p>
+                
+                <button id="surpriseBtn" class="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 via-amber-400 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-black font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-gold-500/20 active:scale-95 transition-all uppercase tracking-widest text-sm">
+                    <i class="fas fa-key"></i>
+                    One Last Message
+                </button>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-gold-500/10 text-center relative z-10 px-4 bg-navy-950">
+            <p class="font-cinematic text-lg sm:text-xl text-gold-400 italic">"Best friends are rare."</p>
+            <p class="font-cinematic text-2xl sm:text-3xl font-semibold text-white mt-1 mb-6">"Brothers by choice are even rarer."</p>
+            <div class="flex items-center justify-center gap-4 text-slate-500 text-xs tracking-wider uppercase">
+                <span>13 Years of Bonds</span>
+                <span>•</span>
+                <span>To Abhi Nav Sai</span>
+                <span>•</span>
+                <span>June 6, 2026</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Polaroid Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="absolute inset-0 cursor-pointer" onclick="closeLightbox()"></div>
+        <div class="relative bg-white text-slate-800 p-4 pb-12 rounded-xl max-w-xl w-full shadow-2xl z-10 transform scale-95 transition-all duration-300" id="lightboxCard">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-2 right-2 bg-slate-100 hover:bg-slate-200 text-slate-800 w-8 h-8 rounded-full flex items-center justify-center text-sm transition-colors shadow">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightboxImg" src="IMG-20260222-WA0115.jpg" class="w-full aspect-square sm:aspect-video object-cover rounded-lg shadow-md mb-4" alt="Enlarged snaps">
+            <div class="px-2">
+                <h4 id="lightboxTitle" class="font-handwritten text-3xl font-bold text-slate-900 leading-none mb-1">Title</h4>
+                <p id="lightboxDesc" class="text-sm text-slate-600 font-light mt-2 leading-relaxed">Description explanation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Surprise Secret Message Modal -->
+    <div id="surpriseModal" class="fixed inset-0 z-50 bg-navy-950/95 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto">
+        <div class="max-w-2xl w-full bg-gradient-to-br from-navy-900 via-navy-950 to-indigo-950 border-2 border-gold-500 p-8 sm:p-12 rounded-3xl text-center space-y-8 relative shadow-3xl">
+            
+            <!-- Floating Glowing Particles inside Modal -->
+            <div class="absolute -top-12 -left-12 w-32 h-32 bg-gold-500/10 blur-xl rounded-full"></div>
+            <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-blue-500/10 blur-xl rounded-full"></div>
+
+            <div class="space-y-2">
+                <span class="text-3xl">🌟</span>
+                <h4 class="text-gold-gradient text-3xl sm:text-5xl font-cinematic font-bold tracking-wide">For Abhi Nav Sai</h4>
+                <p class="text-xs text-slate-400 tracking-widest uppercase">The Sealed Brotherhood Vow</p>
+            </div>
+
+            <!-- Emotional Big Secret Quote -->
+            <div class="space-y-4 py-4 border-y border-gold-500/20 max-w-lg mx-auto">
+                <p class="text-xl sm:text-3xl font-cinematic text-white leading-relaxed italic">
+                    "No matter where life takes us, you will always be one of the most important people in my story."
+                </p>
+                <p class="text-lg text-gold-400 font-medium">
+                    "Happy Birthday, Brother. Here's to 13 years of memories and a lifetime more to create."
+                </p>
+            </div>
+
+            <div class="text-xs text-slate-300 max-w-sm mx-auto">
+                "Our paths will stretch, our worlds will expand, but our roots are locked in the same ground forever."
+            </div>
+
+            <!-- Close Surprise Trigger -->
+            <div>
+                <button id="closeSurprise" class="bg-white text-navy-950 font-bold px-8 py-3 rounded-full hover:bg-gold-400 hover:text-black transition-colors shadow-lg uppercase text-xs tracking-wider">
+                    Close Secret Message
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT ANIMATIONS & LOGIC -->
+    <script>
+        // 1. Starfield Particle System Canvas animation
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const numStars = 110;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.2,
+                    speed: Math.random() * 0.05 + 0.01,
+                    alpha: Math.random() * 0.7 + 0.3,
+                    grow: Math.random() > 0.5
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+            
+            for (let i = 0; i < stars.length; i++) {
+                let s = stars[i];
+                ctx.globalAlpha = s.alpha;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Gentle twinkle logic
+                if (s.grow) {
+                    s.alpha += 0.005;
+                    if (s.alpha >= 1) s.grow = false;
+                } else {
+                    s.alpha -= 0.005;
+                    if (s.alpha <= 0.2) s.grow = true;
+                }
+                
+                // Extremely slow drift down
+                s.y += s.speed;
+                if (s.y > canvas.height) {
+                    s.y = 0;
+                    s.x = Math.random() * canvas.width;
+                }
+            }
+            requestAnimationFrame(drawStars);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        drawStars();
+
+
+        // 2. Countdown Timer logic to June 6, 2026 (Abhi's 19th Birthday)
+        function updateCountdown() {
+            const targetDate = new Date(`June 6, 2026 00:00:00`).getTime();
+            const now = new Date().getTime();
+            let distance = targetDate - now;
+
+            // Fallback: if today is past June 6, 2026, countdown to next year
+            if (distance < 0) {
+                const nextYear = new Date().getFullYear() + 1;
+                const nextTarget = new Date(`June 6, ${nextYear} 00:00:00`).getTime();
+                distance = nextTarget - now;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        // 3. Cinematic Synthesizer using Web Audio API (Plays beautiful soft ambient major chords)
+        let audioCtx = null;
+        let synthesizerTimer = null;
+        let isPlaying = false;
+        
+        // Custom simple synthesizer nodes playing emotional ambient intervals
+        const chords = [
+            [261.63, 329.63, 392.00, 493.88], // Cmaj7
+            [196.00, 293.66, 392.00, 440.00], // Gsus4
+            [220.00, 261.63, 329.63, 392.00], // Am7
+            [174.61, 261.63, 349.23, 440.00]  // Fmaj7
+        ];
+        let currentChordIndex = 0;
+
+        function initSynth() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function playPianoNote(frequency, startTime, duration) {
+            if (!audioCtx) return;
+            
+            const osc = audioCtx.createOscillator();
+            const oscTriangle = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(frequency, startTime);
+
+            oscTriangle.type = 'triangle';
+            oscTriangle.frequency.setValueAtTime(frequency, startTime);
+            
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(0.04, startTime + 0.4); 
+            gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+
+            osc.connect(gainNode);
+            oscTriangle.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start(startTime);
+            oscTriangle.start(startTime);
+            osc.stop(startTime + duration);
+            oscTriangle.stop(startTime + duration);
+        }
+
+        function playAmbientChordsLoop() {
+            if (!isPlaying) return;
+            let now = audioCtx.currentTime;
+            let currentChord = chords[currentChordIndex];
+            
+            currentChord.forEach((freq, idx) => {
+                playPianoNote(freq, now + idx * 0.15, 4.0);
+            });
+
+            currentChordIndex = (currentChordIndex + 1) % chords.length;
+            synthesizerTimer = setTimeout(playAmbientChordsLoop, 4500);
+        }
+
+        // Toggle button logic
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        
+        musicToggle.addEventListener('click', () => {
+            if (!audioCtx) initSynth();
+
+            if (isPlaying) {
+                isPlaying = false;
+                clearTimeout(synthesizerTimer);
+                musicIcon.classList.remove('fa-music');
+                musicIcon.classList.add('fa-volume-mute');
+                musicIcon.classList.remove('animate-pulse');
+            } else {
+                isPlaying = true;
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                playAmbientChordsLoop();
+                musicIcon.classList.add('fa-music');
+                musicIcon.classList.remove('fa-volume-mute');
+                musicIcon.classList.add('animate-pulse');
+            }
+        });
+
+
+        // 4. Section 4: Sneeze interaction logic
+        const sneezeBtn = document.getElementById('sneezeBtn');
+        const sneezeCard = document.getElementById('sneezeCard');
+        const sneezeReveal = document.getElementById('sneezeReveal');
+
+        sneezeBtn.addEventListener('click', () => {
+            sneezeCard.classList.add('sneeze-active');
+            
+            if (audioCtx) {
+                let now = audioCtx.currentTime;
+                playPianoNote(880, now, 0.1);
+                playPianoNote(550, now + 0.1, 0.2);
+            }
+
+            confetti({
+                particleCount: 50,
+                spread: 60,
+                origin: { y: 0.6 },
+                colors: ['#A7F3D0', '#D4AF37', '#ffffff']
+            });
+
+            setTimeout(() => {
+                sneezeCard.classList.remove('sneeze-active');
+                sneezeReveal.style.maxHeight = '150px';
+                sneezeReveal.style.opacity = '1';
+                sneezeReveal.style.marginTop = '12px';
+            }, 650);
+        });
+
+
+        // 5. Memory Gallery Lightbox Controllers
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDesc = document.getElementById('lightboxDesc');
+        const lightboxCard = document.getElementById('lightboxCard');
+
+        function openLightbox(imgSrc, title, description) {
+            lightboxImg.src = imgSrc;
+            lightboxTitle.innerText = title;
+            lightboxDesc.innerText = description;
+            
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            lightboxCard.classList.remove('scale-95');
+            lightboxCard.classList.add('scale-100');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightboxCard.classList.remove('scale-100');
+            lightboxCard.classList.add('scale-95');
+        }
+
+
+        // 6. Section 12: Big Surprise modal logic with golden confetti
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const surpriseModal = document.getElementById('surpriseModal');
+        const closeSurprise = document.getElementById('closeSurprise');
+
+        surpriseBtn.addEventListener('click', () => {
+            surpriseModal.classList.remove('opacity-0', 'pointer-events-none');
+            
+            let end = Date.now() + (2.5 * 1000);
+            let colors = ['#D4AF37', '#F3C65F', '#ffffff'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        });
+
+        closeSurprise.addEventListener('click', () => {
+            surpriseModal.classList.add('opacity-0', 'pointer-events-none');
+        });
+
+
+        // 7. Gemini AI Integration Logic
+        let activeAIMode = 'nostalgia';
+        const suggestions = {
+            nostalgia: [
+                "Class 5th Shaurya blackboard certificate",
+                "Cycling in rain after Class 10",
+                "Sharing spicy home-made curry lunch",
+                "Stealing each other's pens during exams"
+            ],
+            future: [
+                "Year 2035: Silicon Valley tech reunion",
+                "Year 2045: Complaining about a sneeze at 40",
+                "Year 2060: Sharing hot tea in rocking chairs",
+                "Year 2030: Opening a burger joint together"
+            ],
+            creative: [
+                "Emotional movie trailer voiceover script",
+                "Sarcastic roasts about Abhi's gaming habits",
+                "Shakespearean brotherhood sonnet",
+                "Epic fantasy anime battle over the last burger"
+            ]
+        };
+
+        const backgroundContext = `
+            You are "The Brotherhood Chronicle Oracle", an AI embedded in a cinematic birthday website celebrating the 13-year friendship of Abhi Nav Sai (Abhi) and Sai.
+            Background details:
+            - Abhi: Gemini, turning 19 on June 6. Adaptable, loyal, energetic.
+            - Sai: The best friend and brother who made this website.
+            - Journey: Met in 4th class through a mutual friend. Had a massive 3-month fight in 10th class where they didn't speak.
+            - The Sneeze: Sai sneezed awkwardly when attempting to reconnect; Abhi laughed, completely shattering the 3-month ice.
+            - College Separation: Planned to study together, but Sai changed decision last moment. Ended up in different colleges, creating a 2-year physical gap.
+            - The Reunion: Met back up, had Burger King, visited the beach, ate biryani, watched a movie, and picked up exactly where they left off.
+            - Emotional depth: They consider each other family. Sai considers Abhi his brother for life.
+            
+            Keep answers highly engaging, tailored, witty, emotional, and authentic. Never write boring or generic friendship text. Refer directly to Abhi, Sai, the sneeze, the burgers, and the memories when appropriate.
+        `;
+
+        function setAIMode(mode) {
+            activeAIMode = mode;
+            
+            // Highlight Tab
+            const tabs = ['nostalgia', 'future', 'creative'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (t === mode) {
+                    el.className = "py-2 px-1 text-xs sm:text-sm font-semibold rounded-lg text-gold-400 bg-gold-500/10 border border-gold-500/20 transition-all flex items-center justify-center gap-1";
+                } else {
+                    el.className = "py-2 px-1 text-xs sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1";
+                }
+            });
+
+            // Update Label & Placeholder
+            const label = document.getElementById('input-label');
+            const input = document.getElementById('ai-user-input');
+            if (mode === 'nostalgia') {
+                label.innerText = 'Input an old school keyword (e.g. "math lecture", "cycling home"):';
+                input.placeholder = "Enter a memory element...";
+            } else if (mode === 'future') {
+                label.innerText = 'Input a future year or theme (e.g. "2040", "wedding day"):';
+                input.placeholder = "Enter a future year or milestone...";
+            } else {
+                label.innerText = 'What kind of creative writing style do you want? (e.g. "anime battle", "roast"):';
+                input.placeholder = "Enter a style or custom prompt...";
+            }
+
+            renderSuggestions();
+        }
+
+        function renderSuggestions() {
+            const container = document.getElementById('ai-suggestions');
+            container.innerHTML = '';
+            suggestions[activeAIMode].forEach(sug => {
+                const btn = document.createElement('button');
+                btn.className = "bg-navy-950/60 hover:bg-gold-500/10 text-slate-300 hover:text-gold-400 border border-gold-500/10 hover:border-gold-500/30 text-[11px] py-1 px-2.5 rounded-full transition-all";
+                btn.innerText = sug;
+                btn.onclick = () => {
+                    document.getElementById('ai-user-input').value = sug;
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        async function runGemini() {
+            const userInput = document.getElementById('ai-user-input').value.trim();
+            if (!userInput) return;
+
+            const outputWrapper = document.getElementById('ai-output-wrapper');
+            const spinner = document.getElementById('ai-loading-spinner');
+            const textContainer = document.getElementById('ai-output-text');
+
+            outputWrapper.classList.remove('hidden');
+            spinner.classList.remove('hidden');
+            textContainer.innerHTML = '';
+
+            let systemPrompt = backgroundContext;
+            let userPrompt = '';
+
+            if (activeAIMode === 'nostalgia') {
+                systemPrompt += " Write an immersive, emotionally resonant short story/scene based on the school memory the user describes, weaving Abhi and Sai into it.";
+                userPrompt = `School Memory: "${userInput}". Craft a beautiful nostalgia segment around this. Use a warm, cinematic narration style.`;
+            } else if (activeAIMode === 'future') {
+                systemPrompt += " Project a creative, fun, or emotional future scenario where Sai and Abhi meet up. Reference how they still laugh about the 10th-class sneeze or Burger King reunions.";
+                userPrompt = `Future Milestone/Year: "${userInput}". Write a dynamic scenario or short narrative script.`;
+            } else {
+                systemPrompt += " Generate highly stylized creative pieces. It could be an affectionate roast, a sonnet, or an anime script. Keep it deeply personalized to Abhi and Sai's 13-year bond.";
+                userPrompt = `Creative Request: "${userInput}". Write the creative piece beautifully.`;
+            }
+
+            // Fallback backoff parameters
+            const apiKey = ""; // Left empty for Canvas runtime auto-provisioning
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            let attempts = 0;
+            const maxAttempts = 3;
+            let delay = 1000;
+
+            while (attempts < maxAttempts) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429) {
+                        attempts++;
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2; // Exponential backoff
+                        continue;
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        spinner.classList.add('hidden');
+                        animateTypewriter(text);
+                        return;
+                    } else {
+                        throw new Error("Invalid response schema");
+                    }
+                } catch (error) {
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        spinner.classList.add('hidden');
+                        textContainer.innerHTML = `<span class="text-red-400">Failed to forge the chronicle: ${error.message}. Please try again later.</span>`;
+                        return;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // Simulating standard typewriter typing for premium cinematic display
+        function animateTypewriter(text) {
+            const container = document.getElementById('ai-output-text');
+            container.innerHTML = '';
+            
+            // Basic formatting transformation of markdown-like syntax
+            let formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+
+            let currentIdx = 0;
+            let tempString = '';
+            
+            // To ensure rapid, satisfying render of longer text, print chunks of characters
+            function type() {
+                if (currentIdx < formattedText.length) {
+                    // Check for HTML tag
+                    if (formattedText.charAt(currentIdx) === '<') {
+                        let tagEnd = formattedText.indexOf('>', currentIdx);
+                        if (tagEnd !== -1) {
+                            tempString += formattedText.substring(currentIdx, tagEnd + 1);
+                            currentIdx = tagEnd + 1;
+                        }
+                    } else {
+                        tempString += formattedText.charAt(currentIdx);
+                        currentIdx++;
+                    }
+                    container.innerHTML = tempString;
+                    container.scrollTop = container.scrollHeight;
+                    setTimeout(type, 3);
+                }
+            }
+            type();
+        }
+
+        function copyGeneratedText() {
+            const container = document.getElementById('ai-output-text');
+            const range = document.createRange();
+            range.selectNode(container);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            try {
+                document.execCommand('copy');
+                // Temporarily indicate success in UI
+                confetti({
+                    particleCount: 15,
+                    spread: 30,
+                    origin: { y: 0.8 },
+                    colors: ['#D4AF37', '#ffffff']
+                });
+            } catch (err) {
+                console.warn("Unable to copy successfully", err);
+            }
+            window.getSelection().removeAllRanges();
+        }
+
+        // Initialize AI component defaults
+        setAIMode('nostalgia');
+
+
+        // Global variables for audio narration
+        let currentLetterAudio = null;
+
+        // Base64 to ArrayBuffer utility function
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        // Utility to convert raw PCM16 signed audio to readable WAV container
+        function pcmToWav(pcm16, sampleRate) {
+            const buffer = new ArrayBuffer(44 + pcm16.length * 2);
+            const view = new DataView(buffer);
+
+            function writeString(view, offset, string) {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+
+            /* RIFF identifier */
+            writeString(view, 0, 'RIFF');
+            /* file length */
+            view.setUint32(4, 36 + pcm16.length * 2, true);
+            /* RIFF type */
+            writeString(view, 8, 'WAVE');
+            /* format chunk identifier */
+            writeString(view, 12, 'fmt ');
+            /* format chunk length */
+            view.setUint32(16, 16, true);
+            /* sample format (raw) */
+            view.setUint16(20, 1, true);
+            /* channel count (Mono) */
+            view.setUint16(22, 1, true);
+            /* sample rate */
+            view.setUint32(24, sampleRate, true);
+            /* byte rate */
+            view.setUint32(28, sampleRate * 2, true);
+            /* block align */
+            view.setUint16(32, 2, true);
+            /* bits per sample */
+            view.setUint16(34, 16, true);
+            /* data chunk identifier */
+            writeString(view, 36, 'data');
+            /* data chunk length */
+            view.setUint32(40, pcm16.length * 2, true);
+
+            // write direct samples
+            for (let i = 0; i < pcm16.length; i++) {
+                view.setInt16(44 + i * 2, pcm16[i], true);
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        // Narrates the Birthday Letter aloud using gemini-2.5-flash-preview-tts
+        async function readLetterAloud() {
+            const narrateBtn = document.getElementById('narrateBtn');
+            const stopBtn = document.getElementById('stopNarrateBtn');
+            const voiceSelect = document.getElementById('tts-voice');
+            const selectedVoice = voiceSelect.value;
+
+            // Update UI State
+            narrateBtn.disabled = true;
+            narrateBtn.innerHTML = `<span><i class="fas fa-spinner animate-spin"></i> Narrating...</span>`;
+
+            // Prepare voice instruction
+            const letterText = document.getElementById('letter-content').innerText;
+            const ttsPrompt = `Read this deeply emotional letter in a warm, sincere, slow narrator tone with brotherly feeling: "${letterText}"`;
+
+            const apiKey = ""; // Leave as-is for automatic Canvas provisioning
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{
+                    parts: [{ text: ttsPrompt }]
+                }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: {
+                            prebuiltVoiceConfig: { voiceName: selectedVoice }
+                        }
+                    }
+                },
+                model: "gemini-2.5-flash-preview-tts"
+            };
+
+            let attempts = 0;
+            const maxAttempts = 3;
+            let delay = 1000;
+
+            while (attempts < maxAttempts) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429) {
+                        attempts++;
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                        continue;
+                    }
+
+                    const result = await response.json();
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    const audioData = part?.inlineData?.data;
+                    const mimeType = part?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)?.[1] || "24000", 10);
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+
+                        if (currentLetterAudio) {
+                            currentLetterAudio.pause();
+                        }
+
+                        currentLetterAudio = new Audio(audioUrl);
+                        currentLetterAudio.play();
+
+                        // Visual controls transition
+                        stopBtn.classList.remove('hidden');
+                        narrateBtn.classList.add('hidden');
+
+                        currentLetterAudio.onended = () => {
+                            stopLetterNarration();
+                        };
+                        return;
+                    } else {
+                        throw new Error("Invalid audio schema returned");
+                    }
+                } catch (err) {
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        narrateBtn.disabled = false;
+                        narrateBtn.innerHTML = `<span>⚠️ Error narrating</span>`;
+                        setTimeout(() => {
+                            narrateBtn.innerHTML = `<span>🔊 Speak Letter</span>`;
+                        }, 3000);
+                        return;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        function stopLetterNarration() {
+            if (currentLetterAudio) {
+                currentLetterAudio.pause();
+                currentLetterAudio = null;
+            }
+            const narrateBtn = document.getElementById('narrateBtn');
+            const stopBtn = document.getElementById('stopNarrateBtn');
+            
+            narrateBtn.disabled = false;
+            narrateBtn.classList.remove('hidden');
+            narrateBtn.innerHTML = `<span>🔊 Speak Letter</span>`;
+            stopBtn.classList.add('hidden');
+        }
+
+
+        // Overrides setAIMode with expanded Tab listings
+        const originalSetAIMode = setAIMode;
+        setAIMode = function(mode) {
+            activeAIMode = mode;
+            
+            // Highlight Tab
+            const tabs = ['nostalgia', 'future', 'creative', 'illustrator'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (t === mode) {
+                    el.className = "py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-gold-400 bg-gold-500/10 border border-gold-500/20 transition-all flex items-center justify-center gap-1";
+                } else {
+                    el.className = "py-2 px-1 text-[10px] sm:text-sm font-semibold rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1";
+                }
+            });
+
+            // Update Input Labels
+            const label = document.getElementById('input-label');
+            const input = document.getElementById('ai-user-input');
+            const imgContainer = document.getElementById('ai-image-container');
+            const textOutput = document.getElementById('ai-output-text');
+            
+            if (mode === 'nostalgia') {
+                label.innerText = 'Input an old school keyword (e.g. "math lecture", "cycling home"):';
+                input.placeholder = "Enter a memory element...";
+                imgContainer.classList.add('hidden');
+                textOutput.classList.remove('hidden');
+            } else if (mode === 'future') {
+                label.innerText = 'Input a future year or theme (e.g. "2040", "wedding day"):';
+                input.placeholder = "Enter a future year or milestone...";
+                imgContainer.classList.add('hidden');
+                textOutput.classList.remove('hidden');
+            } else if (mode === 'creative') {
+                label.innerText = 'What kind of creative writing style do you want? (e.g. "anime battle", "roast"):';
+                input.placeholder = "Enter a style or custom prompt...";
+                imgContainer.classList.add('hidden');
+                textOutput.classList.remove('hidden');
+            } else if (mode === 'illustrator') {
+                label.innerText = 'Describe a nostalgic visual scene to paint (e.g., "riding bicycles in the rain"):';
+                input.placeholder = "Describe memory painting...";
+                imgContainer.classList.remove('hidden');
+            }
+
+            renderSuggestions();
+        }
+
+        // Add additional suggestions list for the newly added Illustrator model
+        suggestions.illustrator = [
+            "Retro sketch of two schoolboys sharing lunch",
+            "Nostalgic digital painting of cycling home in evening rain",
+            "Two high school boys posing on beach stones at sunset",
+            "Comic strip of an unexpected funny sneeze during exam"
+        ];
+
+        // Modified runGemini function handling text OR image generation dynamically
+        async function runGemini() {
+            const userInput = document.getElementById('ai-user-input').value.trim();
+            if (!userInput) return;
+
+            const outputWrapper = document.getElementById('ai-output-wrapper');
+            const spinner = document.getElementById('ai-loading-spinner');
+            const spinnerTxt = document.getElementById('ai-spinner-text');
+            const textContainer = document.getElementById('ai-output-text');
+            const imgContainer = document.getElementById('ai-image-container');
+            const dreamImg = document.getElementById('ai-dream-img');
+
+            outputWrapper.classList.remove('hidden');
+            spinner.classList.remove('hidden');
+            
+            const apiKey = ""; // Left empty for automatic Canvas provisioning
+
+            // Handler 1: Dream Illustrator Mode (Imagen 4.0 Image Generation)
+            if (activeAIMode === 'illustrator') {
+                spinnerTxt.innerText = "Painting your memory with Imagen 4.0...";
+                textContainer.classList.add('hidden');
+                dreamImg.src = ""; 
+
+                const imgApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+                const imagePrompt = `nostalgic warm memories, anime-style digital painting, watercolor sketch, detailed, warm golden lighting: ${userInput}, depicting best friends Sai and Abhi`;
+
+                const payload = {
+                    instances: [ { prompt: imagePrompt } ],
+                    parameters: { "sampleCount": 1 }
+                };
+
+                let attempts = 0;
+                const maxAttempts = 3;
+                let delay = 1000;
+
+                while (attempts < maxAttempts) {
+                    try {
+                        const response = await fetch(imgApiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.status === 429) {
+                            attempts++;
+                            await new Promise(res => setTimeout(res, delay));
+                            delay *= 2;
+                            continue;
+                        }
+
+                        const result = await response.json();
+                        const base64Data = result?.predictions?.[0]?.bytesBase64Encoded;
+
+                        if (base64Data) {
+                            spinner.classList.add('hidden');
+                            imgContainer.classList.remove('hidden');
+                            dreamImg.src = `data:image/png;base64,${base64Data}`;
+                            return;
+                        } else {
+                            throw new Error("No image data decoded");
+                        }
+                    } catch (error) {
+                        attempts++;
+                        if (attempts >= maxAttempts) {
+                            spinner.classList.add('hidden');
+                            textContainer.classList.remove('hidden');
+                            textContainer.innerHTML = `<span class="text-red-400">Failed to render picture: ${error.message}. Please try again later.</span>`;
+                            return;
+                        }
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                    }
+                }
+                return;
+            }
+
+            // Handler 2: Text Generation Modes (Gemini-3-flash-preview)
+            spinnerTxt.innerText = "Consulting the Brotherhood Cosmos...";
+            textContainer.classList.remove('hidden');
+            imgContainer.classList.add('hidden');
+            textContainer.innerHTML = '';
+
+            let systemPrompt = backgroundContext;
+            let userPrompt = '';
+
+            if (activeAIMode === 'nostalgia') {
+                systemPrompt += " Write an immersive, emotionally resonant short story/scene based on the school memory the user describes, weaving Abhi and Sai into it.";
+                userPrompt = `School Memory: "${userInput}". Craft a beautiful nostalgia segment around this. Use a warm, cinematic narration style.`;
+            } else if (activeAIMode === 'future') {
+                systemPrompt += " Project a creative, fun, or emotional future scenario where Sai and Abhi meet up. Reference how they still laugh about the 10th-class sneeze or Burger King reunions.";
+                userPrompt = `Future Milestone/Year: "${userInput}". Write a dynamic scenario or short narrative script.`;
+            } else {
+                systemPrompt += " Generate highly stylized creative pieces. It could be an affectionate roast, a sonnet, or an anime script. Keep it deeply personalized to Abhi and Sai's 13-year bond.";
+                userPrompt = `Creative Request: "${userInput}". Write the creative piece beautifully.`;
+            }
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            let attempts = 0;
+            const maxAttempts = 3;
+            let delay = 1000;
+
+            while (attempts < maxAttempts) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429) {
+                        attempts++;
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2; // Exponential backoff
+                        continue;
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        spinner.classList.add('hidden');
+                        animateTypewriter(text);
+                        return;
+                    } else {
+                        throw new Error("Invalid response schema");
+                    }
+                } catch (error) {
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        spinner.classList.add('hidden');
+                        textContainer.innerHTML = `<span class="text-red-400">Failed to forge the chronicle: ${error.message}. Please try again later.</span>`;
+                        return;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        // Initialize mode to show expanded options
+        setAIMode('nostalgia');
+    </script>
+</body>
+</html>
